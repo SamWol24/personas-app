@@ -26,7 +26,7 @@ class ComunaController extends Controller
      */
     public function store(Request $request)
     {
-        $comuna = new comuna();
+        $comuna = new Comuna();
         $comuna->comu_nomb = $request->comu_nomb;
         $comuna->muni_codi = $request->muni_codi;
         $comuna->save();
@@ -35,8 +35,10 @@ class ComunaController extends Controller
 
     /**
      * Display the specified resource.
+     * @param int $id
+     * @return \Illuminate\Http\Response
      */
-    public function show( $id)
+    public function show($id)
     {
         $comuna = Comuna::find($id);
         $municipios = DB::table('tb_municipio')
@@ -48,6 +50,9 @@ class ComunaController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     * @return \Illuminate\Http\Response
      */
     public function update(Request $request,  $id)
     {
@@ -61,6 +66,8 @@ class ComunaController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * @param int $id
+     * @return \Illuminate\Http\Response
      */
     public function destroy( $id)
     {
